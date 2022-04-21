@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>玻璃卡片</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- 卡片1 -->
+        <div class="card">
+            <div class="content">
+                <h2>01</h2>
+                <h3>Card One</h3>
+                <p>Realistic glass card hover effect, realistic glass card hover effect, realistic glass card glass
+                    elit hover.</p>
+            </div>
+        </div>
+        <!-- 卡片2 -->
+        <div class="card">
+            <div class="content">
+                <h2>02</h2>
+                <h3>Card Two</h3>
+                <p>Lorem, ipsum dolor amet consectetur glass adipisicing elit. aliquam accusamus,hover <br> glass
+                    effect!
+                </p>
+            </div>
+        </div>
+        <!-- 卡片3 -->
+        <div class="card">
+            <div class="content">
+                <h2>03</h2>
+                <h3>Card Three</h3>
+                <p>Realistic glass card hover effect,glass realistic glass card hover effect, realistic glass card
+                    hover.</p>
+            </div>
+        </div>
+    </div>
+    <!--vanilla-tilt.js是一个平滑的3D倾斜JS库 -->
+    <script src="./vanilla-tilt.js"></script>
+    <script>
+        VanillaTilt.init(document.querySelectorAll(".card"), {
+            max: 20,
+            speed: 400,
+            glare: true,
+            "max-glare": 1
+        })
+    </script>
+</body>
+
+</html>
