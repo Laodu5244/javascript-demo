@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #999;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" placeholder="添加武林高手">
+    <button>添加</button>
+    <ul class="list">
+        <li>李慕白</li>
+        <li>杨过</li>
+        <li>傅红雪</li>
+    </ul>
+
+    <script>
+        let btn = document.querySelector("button")
+        let list = document.querySelector(".list")
+        let inp = document.querySelector("input")
+        // 绑定添加函数
+        btn.onclick = function () {
+            let value = inp.value;
+            let li = document.createElement("li")
+            let txt = document.createTextNode(value)
+
+            // 给ul里添加新li标签并把input输入的内容传给li
+            list.appendChild(li)
+            li.appendChild(txt)
+        }
+        //绑定删除函数,将li的事件委托给ul
+        list.onclick = function (e) {
+            // e.target指向的是ul里的li
+            list.removeChild(e.target)
+        }
+    </script>
+</body>
+
+</html>
