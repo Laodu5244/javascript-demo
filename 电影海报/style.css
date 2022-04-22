@@ -1,0 +1,187 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background: #fff;
+    color: #555;
+    font-family: 'Avenir Next', 'LantingHei SC';
+    font-size: 14px;
+}
+
+.wrap {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: #333;
+    overflow: hidden;
+    perspective: 1800px;
+}
+
+.playground {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+/*海报样式*/
+.photo {
+    width: 240px;
+    height: 320px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -160px 0 0 -120px;
+    z-index: 1;
+    perspective: 1800px;
+    transition: transform .6s, opacity .6s;
+}
+
+.photo::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    visibility: visible;
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.05);
+    transition: opacity 0.6s;
+}
+
+.photo .side {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, .1);
+}
+
+.photo .side-front .image {
+    height: 240px;
+    padding: 20px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.photo .side-front .image img {
+    max-height: 100%;
+}
+
+.photo .side-front .caption {
+    font-size: 16px;
+    text-align: center;
+    color: #a7a0a2;
+    user-select: none;
+}
+
+.photo .side-back .desc {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #a7a0a2;
+    padding: 20px;
+}
+
+.photo-center::after {
+    transition: opacity 0.6s, visibility 0s 0.6s;
+    opacity: 0;
+    visibility: hidden;
+}
+
+/*负责翻转*/
+.photo-inner {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: transform .6s ease-in-out;
+    transform-style: preserve-3d;
+    transform-origin: 0% 50%;
+}
+
+.photo-inner .side-front {
+    transform: rotateY(0deg);
+}
+
+.photo-inner .side-back {
+    transform: rotateY(180deg);
+}
+
+.photo-inner .side {
+    backface-visibility: hidden;
+}
+
+.rotate-back .photo-inner {
+    transform: translate(100%, 0) rotateY(-180deg);
+}
+
+/*控制按钮样式*/
+@font-face {
+    font-family: "icons";
+    src: url("fonts/icons.woff") format("woff");
+    font-weight: normal;
+    font-size: normal;
+}
+
+.nav {
+    position: absolute;
+    bottom: 0;
+    z-index: 999;
+    width: 100%;
+    line-height: 30px;
+    text-align: center;
+    white-space: nowrap;
+    overflow-x: auto;
+}
+
+.nav span {
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+    cursor: pointer;
+    background: #aaa;
+    text-align: center;
+    transform: scale(.48);
+    transition: transform .5s ease-in-out, background .5s ease-in-out;
+}
+
+.nav span::after {
+    content: "\e600";
+    display: inline-block;
+    vertical-align: top;
+    font-family: 'icons';
+    font-size: 80%;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 30px;
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.3s;
+    backface-visibility: hidden;
+}
+
+.nav .current {
+    background: #888;
+    transform: scale(1);
+}
+
+.nav .current::after {
+    opacity: 1;
+    transition-delay: 0.4s;
+}
+
+.nav .curr-back {
+    background: #555;
+    transform: rotateY(-180deg);
+}
+
+.hide {
+    opacity: 0;
+}
