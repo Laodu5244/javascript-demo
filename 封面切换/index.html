@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: rgb(106, 99, 103);
+    }
+
+    .container {
+      width: 400px;
+      margin: 50px auto;
+    }
+
+    #bigImg {
+      width: 300px;
+      height: 300px;
+      border-radius: 15px;
+    }
+
+    li {
+      list-style: none;
+      border: 1px solid transparent;
+    }
+
+    ul {
+      display: flex;
+    }
+
+    ul li {
+      margin: 5px;
+      width: 50px;
+      height: 50px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    ul img {
+      width: 100%;
+      height: 100%;
+      border-radius: 5px;
+    }
+
+    .active {
+      border: 1px solid red;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <img src="img/1.jpg" id="bigImg">
+    <ul>
+      <li class="active"><img src="img/1.jpg" class="smallImg"></li>
+      <li><img src="img/2.jpg" class="smallImg"></li>
+      <li><img src="img/3.jpg" class="smallImg"></li>
+      <li><img src="img/4.jpg" class="smallImg"></li>
+      <li><img src="img/5.jpg" class="smallImg"></li>
+    </ul>
+  </div>
+
+  <script>
+    let bigImg = document.querySelector("#bigImg");
+    let smallImgs = document.querySelectorAll(".smallImg");
+
+    for (let i = 0; i < smallImgs.length; i++) {
+      // 遍历图片集合,给每一个小图片添加事件
+      smallImgs[i].onmouseover = function () {
+        for (var j = 0; j < smallImgs.length; j++) {
+          // 在给li添加active类名之前清空所有元素的类名,来达到切换效果
+          smallImgs[j].parentNode.setAttribute("class", "");
+        }// parentNode是父级 
+
+        // 修改大图的src属性值
+        let smallImgSrc = this.getAttribute("src");
+        bigImg.setAttribute("src", smallImgSrc);
+        //给当前的li添加active类名
+        this.parentNode.setAttribute("class", "active");
+      }
+    }
+  </script>
+</body>
+
+</html>
