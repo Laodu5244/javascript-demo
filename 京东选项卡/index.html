@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #ddd;
+
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .container {
+            margin: 100px auto;
+            width: 600px;
+            height: 300px;
+            background-color: antiquewhite;
+        }
+
+        .tab ul {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 600px;
+            height: 50px;
+        }
+
+        .tab ul li {
+            cursor: pointer;
+        }
+
+        .tab .current {
+            background-color: #c81623;
+            color: #fff;
+        }
+
+        .item {
+            display: none;
+        }
+
+        .item1 {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="tab">
+            <ul>
+                <li class="current">商品介绍</li>
+                <li>售后保障</li>
+                <li>产品规格</li>
+                <li>商品评价</li>
+                <li>手机社区</li>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="item item1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, animi. Porro
+                repellendus
+                vitae ipsum nisi qui rerum aliquam laborum quas, fuga eveniet mollitia fugiat, excepturi sit officia ea
+                deserunt facilis!</div>
+            <div class="item">
+                有序推进各地区各行业各领域信用建设，《意见》将进一步发挥信用对提高资源配置效率、降低制度性交易成本、防范化解风险的重要作用，为提升国民经济体系整体效能、促进形成新发展格局提供支撑和保障。</div>
+            <div class="item">
+                市场经济是法治经济、信用经济，信用制度是社会主义市场经济体制的重要基础。近年来，我国社会信用体系建设取得了积极成效，信用法规制度有序推进，信用信息共享水平显著提高，统一社会信用代码基本实现全覆盖，信用承诺和告知承诺制广泛应用，信用贷款支撑中小微企业融资服务，全社会信用建设意识明显增强.
+            </div>
+            <div class="item">
+                提高法治化规范化水平，支撑“放管服”改革、改善全社会信用环境；另一方面要通过信用体系建设高质量发展，推动经济社会高质量发展，营造良好营商环境，促进国民经济循环高效畅通、加快构建新发展格局。</div>
+            <div class="item">《 人民日报 》（ 2022年04月12日 05 版）</div>
+        </div>
+    </div>
+    <script>
+        let tab = document.querySelector(".tab")
+        let lis = tab.querySelectorAll("li")
+        let items = document.querySelectorAll(".item")
+        for (let i = 0; i < lis.length; i++) {
+            // 给li绑定index序号
+            lis[i].setAttribute("index", i)
+            lis[i].onclick = function () {
+                for (let i = 0; i < lis.length; i++) {
+                    lis[i].className = "";
+                }
+                this.className = "current";
+                let index = this.getAttribute("index");
+                for (let i = 0; i < items.length; i++) {
+                    items[i].style.display = "none";
+                }
+                items[index].style.display = "block";
+            }
+        }
+    </script>
+</body>
+
+</html>
