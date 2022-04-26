@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: dimgray;
+        }
+
+        .box {
+            width: 400px;
+            height: 100px;
+            margin: 50px auto;
+        }
+
+        .fa {
+            width: 400px;
+            height: 50px;
+            border: 1px solid #222;
+            background: #eee;
+            border-radius: 25px;
+            overflow: hidden;
+        }
+
+        .son {
+            width: 0;
+            height: 100%;
+            border-radius: 25px;
+            background: orange;
+            text-align: center;
+            padding-top: 5px;
+            box-sizing: border-box;
+
+        }
+
+        span {
+            font-size: 28px;
+        }
+
+        button {
+            display: block;
+            width: 150px;
+            height: 40px;
+            margin: 10px auto;
+            font-size: 24px;
+            color: rgb(23, 35, 5);
+            font-weight: 800;
+            text-align: center;
+            border-radius: 20px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="box">
+        <div class="fa">
+            <div class="son">
+                <span>0</span><span>%</span>
+            </div>
+        </div>
+        <button id="but">开始下载</button>
+    </div>
+
+    <script>
+        let btn = document.querySelector("button")
+        console.log(btn)
+        let son = document.querySelector(".son")
+        let span = document.querySelector("span")
+        let timer = null;
+        btn.onclick = function () {
+            let num = 0;
+            if (timer == null) {
+                timer = setInterval(() => {
+                    num += 1;
+                    //给宽度递增
+                    son.style.width = num + "px";
+                    //给百分比递增
+                    span.innerText = Math.ceil(num / 400 * 100);
+                    if (num === 400) {
+                        clearInterval(timer);
+                        timer = null
+                    }
+                }, 20);
+            }
+        }
+    </script>
+</body>
+
+</html>
