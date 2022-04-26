@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>滑动切换的注册登录界面</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-box">
+            <!-- 注册 -->
+            <div class="box1 hidden">
+                <h1>register</h1>
+                <input type="text" placeholder="用户名">
+                <input type="email" placeholder="邮箱">
+                <input type="password" placeholder="密码">
+                <input type="password" placeholder="确认密码">
+                <button>注册</button>
+            </div>
+            <!-- 登陆 -->
+            <div class="box2">
+                <h1>login</h1>
+                <input type="text" placeholder="用户名">
+                <input type="password" placeholder="密码">
+                <button>登陆</button>
+            </div>
+        </div>
+
+        <!-- 背景 -->
+        <div class="content left">
+            <h2>欢迎来到<span>宠物之家</span></h2>
+            <p>快来领取你的专属<span>宠物</span>吧</p>
+            <img src="img/1.png" alt="">
+            <p>已有账号</p>
+            <button id="login">去登陆</button>
+        </div>
+        <div class="content right">
+            <h2>欢迎来到<span>宠物之家</span></h2>
+            <p>快来看看你的可爱<span>宠物</span>吧</p>
+            <img src="img/2.png" alt="">
+            <p>没有账号?</p>
+            <button id="register">去注册</button>
+        </div>
+    </div>
+
+    <script>
+        let login = document.querySelector("#login");
+        let register = document.querySelector("#register");
+        let form = document.querySelector(".form-box");
+        box1 = document.querySelector(".box1");
+        box2 = document.querySelector(".box2");
+
+        //注册按钮点击事件
+        register.addEventListener("click", () => {
+            form.style.transform = "translateX(80%)";
+            box2.classList.add("hidden");
+            box1.classList.remove("hidden");
+        })
+        //登陆按钮点击事件
+        login.addEventListener("click", () => {
+            form.style.transform = "translateX(0%)";
+            box1.classList.add("hidden");
+            box2.classList.remove("hidden");
+        })
+    </script>
+</body>
+
+</html>
