@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background: #ccc;
+        }
+
+        .box {
+            position: relative;
+            width: 500px;
+            border: 1px solid red;
+            margin: 100px auto 0;
+            height: 40px;
+        }
+
+        .box input {
+            width: 496px;
+            height: 38px;
+            border: 0;
+            outline: none;
+            font-size: 22px;
+        }
+
+        .box img {
+            position: absolute;
+            right: 0;
+            width: 40px;
+            height: 40px;
+            /* display: none; */
+        }
+
+        .box2 {
+            width: 500px;
+            background-color: red;
+            color: #fff;
+            text-align: center;
+            line-height: 40px;
+            margin: 20px auto;
+            height: 40px;
+            cursor: pointer;
+            border-radius: 20px;
+            font-size: 26px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <label for="">
+            <img src="img/open.jpg" alt="">
+        </label>
+        <input type="password" placeholder="请输入密码">
+    </div>
+    <div class="box2">登 陆</div>
+
+    <script>
+        let img = document.querySelector("img")
+        let inp = document.querySelector("input")
+        let box2 = document.querySelector(".box2")
+        let flag = 0;
+
+        img.onclick = function () {
+            if (flag === 0) {
+                inp.type = "text"
+                img.src = "img/close.jpg"
+                flag = 1;
+            } else {
+                inp.type = "password"
+                img.src = "img/open.jpg"
+                flag = 0;
+            }
+        }
+
+        box2.onclick = function () {
+            alert("登陆失败,请检查网络")
+        }
+    </script>
+</body>
+
+</html>
