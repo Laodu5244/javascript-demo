@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>阿里云盘</title>
+  <link rel="stylesheet" href="fonts/font.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="left-box">
+      <ul>
+        <li class="item active">
+          <i class="icon icon-file"></i>
+          文件
+        </li>
+        <li class="item">
+          <i class="icon icon-album"></i>
+          相册
+        </li>
+        <li class="item">
+          <i class="icon icon-like"></i>
+          收藏夹
+        </li>
+        <li class="item">
+          <i class="icon icon-vault"></i>
+          保险箱
+        </li>
+        <li class="item">
+          <i class="icon icon-favorite"></i>
+          订阅
+        </li>
+        <li class="item">
+          <i class="icon icon-trash"></i>
+          回收站
+        </li>
+        <hr>
+        <li class="item">
+          <i class="icon icon-transfer"></i>
+          传输列表
+        </li>
+      </ul>
+
+      <div class="user-info">
+        <h2>欢迎登陆
+          <i class="icon icon-gear"></i>
+        </h2>
+
+      </div>
+    </div>
+    <div class="right-box">
+      <div class="top">
+        <span class="current-tag">文件</span>
+        <div class="btn">
+          <i class="icon icon-search"></i>
+        </div>
+        <div class="btn">
+          <i class="icon icon-add"></i>
+        </div>
+      </div>
+      <div class="middle">欢迎来到阿里云盘</div>
+      <div class="handler"></div>
+    </div>
+  </div>
+
+  <script>
+    // 获取要操作的元素
+    let items = document.querySelectorAll('.item');
+    let current_tag = document.querySelector('.current-tag');
+    let handler = document.querySelector('.handler');
+    let left_box = document.querySelector('.left-box');
+
+    // 为每一个li设置点击事件
+    items.forEach((item) => {
+      item.addEventListener('click', setActive);
+    })
+
+    // 封装选中项样式的函数
+    function setActive() {
+      items.forEach((item) => {
+        item.classList.remove('active');
+      })
+      this.classList.add('active');
+      current_tag.innerText = this.innerText;
+    }
+
+    // 设置左边栏隐藏
+    handler.addEventListener('click', function () {
+      if (!this.classList.contains('close')) {
+        left_box.style.width = 0;
+        this.classList.add('close');
+      } else {
+        left_box.style.width = 250 + 'px';
+        this.classList.remove('close');
+      }
+    })
+  </script>
+</body>
+
+</html>
