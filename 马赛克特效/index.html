@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>马赛克按钮特效</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="button">
+        <div class="back" style="--c:#e74c3c"></div>
+        <p>点赞</p>
+    </div>
+    <div class="button">
+        <div class="back" style="--c:#2ecc71"></div>
+        <p>评论</p>
+    </div>
+    <div class="button">
+        <div class="back" style="--c:#3498db"></div>
+        <p>转发</p>
+    </div>
+    <div class="button">
+        <div class="back" style="--c:#9b59b6"></div>
+        <p>收藏</p>
+    </div>
+    <script>
+        let backs = document.querySelectorAll(".back")
+        // 遍历所有的.back层，并添加span元素作为背景
+        for (let i = 0; i < backs.length; i++) {
+            let back = backs[i];
+            // 宽高尺寸采用.back层的1/40宽度
+            let width = back.clientWidth / 40;
+            let height = width;
+            // 计算所需的背景块数量
+            let count = 40 * parseInt(back.clientHeight / height);
+            for (let j = 0; j < count; j++) {
+                // 根据计算结果并添加对应数量的span元素
+                let span = document.createElement("span");
+                span.style.width = width + 'px';
+                span.style.height = width + 'px';
+                // 注意"0.2s linear "中的linear后必须有空格
+                span.style.transition = "0.1s linear " + Math.random() / 2 + "s";
+                back.appendChild(span);
+            }
+        }
+    </script>
+</body>
+
+</html>
