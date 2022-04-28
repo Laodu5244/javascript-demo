@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        background-color: #888;
+    }
+
+    .box {
+        width: 200px;
+        height: 300px;
+        background-color: #eee;
+        padding: 20px;
+        margin: 0 auto;
+    }
+
+    button {
+        margin: 15px 25px;
+    }
+
+    .text {
+        text-align: center;
+        font-size: 18px;
+
+    }
+
+    .text2 {
+        color: chocolate;
+        font-size: 22px;
+        font-family: "楷体";
+    }
+
+    .text1 {
+        color: chocolate;
+        font-size: 25px;
+        font-family: "楷体";
+    }
+</style>
+
+<body>
+    <div class="box">
+        <p class="text text1">辟邪剑谱</p>
+        <p class="text">原价:1980元</p>
+        <p class="text">现价:1.98元</p>
+        <p class="text text2">欲练此功</p>
+        <p class="text text2">必先自宫</p>
+        <p>
+            <button id="btn1">取消</button>
+            <button id="btn2">支付</button>
+        </p>
+    </div>
+</body>
+
+<script>
+    document.querySelector("#btn1").onclick = function () {
+        alert("葵花宝典也是特价,先到先得!");
+    }
+    document.querySelector("#btn2").onclick = function () {
+        let res = window.confirm("一块九毛八,要啥自行车!")
+        if (res) {
+            location.href = "./html/succ.html"
+        }
+    }
+</script>
+
+</html>
