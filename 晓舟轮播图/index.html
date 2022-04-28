@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #888;
+        }
+
+        .swiper {
+            margin: 100px auto;
+            width: 750px;
+            height: 291px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .images {
+            width: 2250px;
+            height: 291px;
+            display: flex;
+            transition: transform 0.5s;
+        }
+
+        img {
+            width: 750px;
+            height: 291px;
+        }
+
+        .list {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translate(-50%);
+            width: 150px;
+            height: 50px;
+            z-index: 9;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        button {
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            transition: all 0.5s;
+        }
+
+        button:hover {
+            transform: scale(1.5);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="swiper">
+        <div class="images">
+            <img src="img/1.jpg" alt="">
+            <img src="img/2.jpg" alt="">
+            <img src="img/3.jpg" alt="">
+        </div>
+        <div class="list">
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+        </div>
+    </div>
+
+    <script>
+        // 获取按钮和图片盒子
+        let btn = document.querySelectorAll("button")
+        let box = document.querySelector(".images")
+
+        for (let i in btn) {
+            btn[i].onclick = function () {
+                // 利用模板字符串给box赋值
+                box.style.transform = `translate(${-640 * i}px)`
+            }
+        }
+    </script>
+</body>
+
+</html>
