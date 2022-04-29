@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #666;
+        }
+
+        .container {
+            width: 400px;
+            height: 400px;
+            margin: 30px auto;
+        }
+
+        ul {
+            display: flex;
+        }
+
+        li {
+            margin: 8px;
+            list-style: none;
+            text-align: center;
+            background: rgb(177, 217, 177);
+            border: 1px solid #222;
+            cursor: pointer;
+        }
+
+        .box {
+            display: flex;
+            justify-content: center;
+        }
+
+        img {
+            width: 450px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <ul>
+            <li>齐柏林 1</li>
+            <li>齐柏林 2</li>
+            <li>齐柏林 3</li>
+            <li>齐柏林 4</li>
+        </ul>
+        <div class="box">
+            <img src="img/1.jpg" alt="" style="display:block">
+            <img src="img/2.jpg" alt="">
+            <img src="img/3.jpg" alt="">
+            <img src="img/4.jpg" alt="">
+        </div>
+    </div>
+
+    <script>
+        let list = document.querySelectorAll("li");
+        let imgs = document.querySelectorAll("img");
+        for (let i = 0; i < list.length; i++) {
+            //元素数组的下标设置
+            list[i].index = i;
+            list[i].onmouseover = function () {
+                list[i].style.backgroundColor = "orange";
+            }
+            list[i].onmouseout = function () {
+                list[i].style.backgroundColor = " rgb(177, 217, 177)"
+            }
+            list[i].onclick = function () {
+                for (let j = 0; j < imgs.length; j++) {
+                    imgs[j].index = j;
+                    imgs[j].style.display = "none";
+                }
+                imgs[this.index].style.display = "block";
+            }
+        }
+    </script>
+</body>
+
+</html>
