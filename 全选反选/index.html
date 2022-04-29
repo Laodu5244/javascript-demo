@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #999;
+        }
+
+        .box {
+            width: 400px;
+            height: 400px;
+            margin: 50px auto;
+        }
+
+        input,
+        label {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<div class="box">
+    <form action="">
+        <p>
+            <input type="checkbox" id="in">
+            <label for="in">尼古拉斯·赵四</label>
+        </p>
+        <p>
+            <input type="checkbox" id="in2">
+            <label for="in2">莱昂纳多·刘能</label>
+        </p>
+        <p>
+            <input type="checkbox" id="in3">
+            <label for="in3">约翰尼·宋小宝</label>
+        </p>
+        <p>
+            <input type="checkbox" id="in4">
+            <label for="in4">布拉德·小沈阳</label>
+        </p>
+        <p>
+            <input type="checkbox" id="in5">
+            <label for="in5">锦州嫖客·王大拿</label>
+        </p>
+    </form>
+
+    <button>全选</button>
+    <button>反选</button>
+    <button>清空</button>
+</div>
+
+<body>
+    <script>
+        let btn = document.querySelectorAll("button");
+        let input = document.querySelectorAll("input");
+        // 全选
+        btn[0].onclick = function () {
+            for (let i = 0; i < input.length; i++) {
+                input[i].checked = true;
+            }
+        }
+        // 清空
+        btn[2].onclick = function () {
+            for (let i = 0; i < input.length; i++) {
+                input[i].checked = false;
+            }
+        }
+        // 反选
+        btn[1].onclick = function () {
+            for (let i = 0; i < input.length; i++) {
+                input[i].checked = !input[i].checked;
+            }
+        }
+    </script>
+</body>
+
+</html>
