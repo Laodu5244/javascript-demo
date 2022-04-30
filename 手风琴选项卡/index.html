@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>手风琴选项卡</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="fonts/css/font-awesome.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="item active">
+      <div class="shadow"></div>
+      <div class="content">
+        <div class="icon">
+          <i class="fa fa-sun-o"></i>
+        </div>
+        <div class="text">
+          <div class="tit">东邪</div>
+          <div class="sub">黄老邪</div>
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <div class="shadow"></div>
+      <div class="content">
+        <div class="icon">
+          <i class="fa fa-cloud"></i>
+        </div>
+        <div class="text">
+          <div class="tit">西毒</div>
+          <div class="sub">欧阳峰</div>
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <div class="shadow"></div>
+      <div class="content">
+        <div class="icon">
+          <i class="fa fa-tint"></i>
+        </div>
+        <div class="text">
+          <div class="tit">南帝</div>
+          <div class="sub">一灯大师</div>
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <div class="shadow"></div>
+      <div class="content">
+        <div class="icon">
+          <i class="fa fa-bolt"></i>
+        </div>
+        <div class="text">
+          <div class="tit">北丐</div>
+          <div class="sub">洪七公</div>
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <div class="shadow"></div>
+      <div class="content">
+        <div class="icon">
+          <i class="fa fa-snowflake-o"></i>
+        </div>
+        <div class="text">
+          <div class="tit">中神通</div>
+          <div class="sub">王重阳</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+  let items = document.querySelectorAll(".item");
+
+  items.forEach((item) => {
+    item.addEventListener("click", getActive);
+  })
+
+  function getActive() {
+    items.forEach((i) => {
+      i.classList.remove('active');
+    })
+    this.classList.add('active')
+  }
+  </script>
+</body>
+
+</html>
