@@ -1,0 +1,85 @@
+/* 引入字体 */
+@import url("http://fonts.googleapis.com/css?family=Work+Sans:200,300,400,500,600,700,800,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(to right, #57718b, rgb(141, 94, 94));
+  overflow: hidden;
+}
+
+.container {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Work Sans';
+  font-size: 60px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.text {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.35s ease;
+}
+
+.hover-text {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  width: 100%;
+  pointer-events: none;
+  clip-path: circle(75px at var(--x) var(--y));
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.img-con {
+  position: absolute;
+  z-index: -2;
+  top: -75px;
+  left: -75px;
+  width: 150px;
+  height: 150px;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.hover-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.9);
+}
+
+/* 鼠标移入文字，对应元素的变化 */
+.text:hover {
+  color: #333;
+}
+
+.text:hover~.hover-text {
+  opacity: 1;
+}
+
+.text:hover~.img-con {
+  opacity: 1;
+}

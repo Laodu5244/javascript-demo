@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>光标悬停特效</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="text">beijing 2022</div>
+    <div class="hover-text">beijing 2022</div>
+    <div class="img-con">
+      <img src="images/1.jpg" alt="" class="hover-img">
+    </div>
+  </div>
+
+  <script>
+    let text = document.querySelector('.hover-text');
+    let img = document.querySelector('.hover-img');
+    //显示内容
+    function showHoverCon(e) {
+      // 获取鼠标指针
+      let x = e.clientX;
+      let y = e.clientY;
+      //用模板字符串把坐标赋值给图片
+      img.style.transform = `translate(${x}px,${y}px)`;
+      text.style.setProperty('--x', x + 'px');
+      text.style.setProperty('--y', y + 'px');
+    }
+    document.addEventListener('mousemove', showHoverCon);
+  </script>
+</body>
+
+</html>
