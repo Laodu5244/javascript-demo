@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    body {
+      background: #999;
+    }
+
+    img {
+      height: 300px;
+    }
+
+    div {
+      width: 500px;
+      height: 350px;
+      margin: 30px auto;
+    }
+
+    button {
+      height: 40px;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <img src="./image/01.webp" id="lady">
+    <button id="prev">上一张</button>
+    <button id="next">下一张</button>
+  </div>
+
+  <script>
+    // 1.获取事件源
+    let lady = document.querySelector("#lady");
+    let prev = document.querySelector("#prev");
+    let next = document.querySelector("#next");
+    var minIndex = 1, maxIndex = 4; currentIndex = minIndex;
+    // 2.按钮绑定点击事件
+    next.onclick = function () {
+      if (currentIndex === maxIndex) {
+        currentIndex = minIndex;
+      } else {
+        currentIndex++;
+      }
+      lady.setAttribute("src", `image/0${currentIndex}.webp`);
+    }
+    prev.onclick = function () {
+      if (currentIndex === minIndex) {
+        currentIndex = maxIndex;
+      } else {
+        currentIndex--;
+      }
+      lady.setAttribute("src", `image/0${currentIndex}.webp`);
+    }
+
+  </script>
+</body>
+
+</html>
