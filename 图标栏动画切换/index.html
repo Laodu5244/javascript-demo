@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>图标栏动画切换</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="fonts/css/font-awesome.css">
+</head>
+
+<body>
+  <div class="tabbar">
+    <ul>
+      <li class="item active" onclick="setActive(this,'--blue60')">
+        <i class="fa fa-firefox"></i>
+      </li>
+      <li class="item" onclick="setActive(this,'--red60')">
+        <i class="fa fa-opera"></i>
+      </li>
+      <li class="item" onclick="setActive(this,'--green60')">
+        <i class="fa fa-chrome"></i>
+      </li>
+      <li class="item" onclick="setActive(this,'--purple60')">
+        <i class="fa fa-bandcamp"></i>
+      </li>
+      <li class="item" onclick="setActive(this,'--orange60')">
+        <i class="fa fa-internet-explorer"></i>
+      </li>
+      <div class="active-circle"></div>
+    </ul>
+  </div>
+
+  <script>
+    // 获取所有.item元素和背景圆
+    let items = document.querySelectorAll(".item");
+    let active = document.querySelector(".active-circle");
+    // 参数：_t:点击对象，bg_color:设置body的背景颜色
+    function setActive(_t, bg_color) {
+      // 遍历所有.item元素，移除active样式
+      items.forEach((item) => {
+        item.classList.remove("active");
+      })
+      // 为当前选中项添加active样式
+      _t.classList.add("active");
+      // 为背景圆添加jello样式
+      active.classList.add("jello");
+
+      // 设置0.5秒后移除jello类名，确保每一次点击都有Q弹的感觉
+      setTimeout(() => {
+        active.classList.remove("jello");
+      }, 500);
+      // 设置背景颜色
+      document.documentElement.style.setProperty('--bg-color', 'var(' + bg_color + ')');
+    }
+
+  </script>
+</body>
+
+</html>
