@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background: #888;
+        }
+
+        .list {
+            width: 300px;
+            height: 800px;
+        }
+
+        .list img {
+            margin: 5px;
+            width: 300px;
+        }
+
+        .big {
+            position: fixed;
+        }
+
+        .big img {
+            width: 800px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="list">
+        <img src="img/1.jpg" alt="">
+        <img src="img/2.jpg" alt="">
+        <img src="img/3.jpg" alt="">
+    </div>
+    <div class="big">
+
+    </div>
+
+    <script>
+        let imgs = document.querySelectorAll(".list img")
+        let big = document.querySelector(".big")
+        let list = document.querySelector(".list")
+        // 给big盒子添加大图
+        for (let i in imgs) {
+            imgs[i].onmouseenter = function () {
+                big.innerHTML = `<img src="${this.src}">`
+            }
+            imgs[i].onmouseleave = function () {
+                big.innerHTML = "";
+            }
+        }
+
+        //大图跟随鼠标移动
+        list.onmousemove = function (e) {
+            let x = e.clientX;
+            let y = e.clientY;
+            big.style.top = y + 10 + "px";
+            big.style.left = x + 10 + "px";
+        }
+
+    </script>
+</body>
+
+</html>
