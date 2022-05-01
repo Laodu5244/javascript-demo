@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    body {
+      background: #999;
+    }
+
+    img {
+      height: 300px;
+    }
+
+    div {
+      width: 500px;
+      height: 350px;
+      margin: 30px auto;
+    }
+
+    button {
+      height: 40px;
+      width: 80px;
+      font-size: 24px;
+      font-weight: bold;
+      line-height: 35px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <button id="next">隐藏</button>
+    <img src="./04.webp" id="lady">
+  </div>
+
+  <script>
+    let lady = document.querySelector("img");
+    let next = document.querySelector("#next");
+
+    next.addEventListener('click', () => {
+      if (next.innerHTML === "隐藏") {
+        lady.style.display = "none";
+        next.innerHTML = "显示";
+      } else {
+        lady.style.display = "block";
+        next.innerHTML = "隐藏";
+      }
+    })
+  </script>
+</body>
+
+</html>
