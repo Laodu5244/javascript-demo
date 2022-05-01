@@ -1,0 +1,90 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  overflow: hidden;
+  background-color: #666;
+}
+ul {
+  list-style: none;
+}
+.showcase {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -140px;
+  margin-left: -260px;
+  width: 520px;
+  height: 280px;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 20px;
+}
+.showcase:hover span {
+  display: block;
+}
+.slides {
+  position: absolute;
+  /* 处理空白折叠 */
+  font-size: 0;
+}
+.slide {
+  display: inline-block;
+}
+span {
+  position: absolute;
+  top: 50%;
+  margin-top: -20px;
+  width: 30px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  line-height: 40px;
+  color: #fff;
+  display: none;
+  font-size: 20px;
+  transition: all 0.8s;
+}
+span:hover {
+  color: #ff5000;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.left {
+  left: 0;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+.right {
+  right: 0;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+.spots {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  margin-left: -75px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 15px;
+  font-size: 0;
+  transition: all 1s;
+  border: 1px solid grey;
+}
+.spots:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.spots .spot {
+  display: inline-block;
+  margin: 7px;
+  width: 16px;
+  height: 16px;
+  border-radius: 10px;
+  background-color: #fff;
+  transition: all 1s;
+  border: 1px solid grey;
+}
+ul.spots li.spot.active {
+  background-color: rgb(255, 94, 0);
+}
