@@ -1,0 +1,96 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #aaa;
+  max-height: 100vh;
+}
+
+.container {
+  position: relative;
+  width: 750px;
+  max-height: 100vh;
+  margin: 50px auto;
+}
+
+.title {
+  position: relative;
+  height: 40px;
+  display: flex;
+  justify-content: space-around;
+}
+
+button {
+  position: absolute;
+  left: 20%;
+  top: 0;
+  height: 40px;
+  width: 100px;
+  font-size: 20px;
+  color: brown;
+  font-weight: bold;
+}
+
+.title div {
+  line-height: 50px;
+  color: brown;
+  font-weight: bold;
+}
+
+ul {
+  list-style: none;
+  border: 1px solid #555;
+  border-bottom: none;
+  border-right: none;
+  position: relative;
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+
+ul li {
+  border: 1px solid #555;
+  border-left: none;
+  border-top: none;
+}
+
+#snake {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+#snake div {
+  background: #00ff00;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border: 1px solid #555;
+  border-left: none;
+  border-top: none;
+  line-height: 40px;
+  text-align: center;
+  font-weight: bolder;
+  color: red;
+}
+
+#food {
+  background: orange;
+  color: #fff;
+  position: absolute;
+  line-height: 40px;
+  text-align: center;
+  left: 0;
+  top: 0;
+  border: 1px solid #555;
+  border-left: none;
+  border-top: none;
+}
+
+.snakeBody {
+  background-color: green;
+
+}
