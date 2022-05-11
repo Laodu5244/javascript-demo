@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    #box{
+      width: 800px;
+      margin: 20px auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box">
+    <input type="text" id="input">
+    <button id="btn">查找</button>
+    <p id="text">丰台区自5月11日起逢单日开展核酸检测服务。列入重点筛查区域的街镇，按照重点区域核酸筛查措施执行。未列入重点筛查区域的，群众可根据需求自愿参加检测。本区第一批设置常态化采样点48个、临时采样点329个，以满足居民需求。对于封控区和管控区等重点区域以及密接、高风险人群等重点人群，按照原有规定的检测频次开展核酸检测。<br><br> 参加检测时，请佩戴好口罩，有序排队，落实好“两米线”防疫要求，不聚集、不交谈，采样完成后立即戴好口罩，迅速离开，回到家后仔细清洗双手。如遇排队过长，请根据现场工作人员的提示，到临近点位或选择其他时段检测。<br><br>核酸检测点明显比之前少了非常多，检测核酸的人明显比之前多了很多人，社区里很少能有保证一米距离的空间，规范了，风险也随着来了。<br><br>中国工农红军第二方面军长征出发地纪念馆内，人们缅怀先烈、聆听革命故事；洪家关白族乡的红军体验园里，游人在“爬雪山、过草地、飞夺泸定桥”等项目中感悟长征精神……</p>
+  </div>
+  <script>
+  let text = _id('text'),
+    input = _id('input'),
+    btn = _id('btn');
+
+  btn.onclick = function() {
+    let v = input.value;
+    text.innerHTML = text.innerText;
+    if (v) {
+      let reg = new RegExp(v,'g')
+      let new_v="<span style='background:yellow'>" + v +"</span>"
+      text.innerHTML = text.innerHTML.replace(reg,new_v);
+    }
+  }
+
+
+
+  function _id(id) {
+    return document.getElementById(id);
+  }
+  </script>
+</body>
+
+</html>
