@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  body {
+    background: #999;
+  }
+
+  .box {
+    display: flex;
+    width: 500px;
+    margin: 0 auto;
+  }
+
+  #small {
+    margin-right: 20px;
+    width: 150px;
+    height: 150px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    position: relative;
+  }
+
+  #small img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+  }
+
+  #big {
+    background: #fff;
+    width: 300px;
+    height: 300px;
+    border: 1px solid #333;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  #big img {
+    width: 600px;
+    height: 600px;
+    border-radius: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+  }
+
+  #move {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 75px;
+    height: 75px;
+    background: yellow;
+    border-radius: 5px;
+    opacity: 0.3;
+    display: none;
+  }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <div id="small">
+      <img id="small_img" src="./images/1.jpg.avif">
+      <div id="move"></div>
+    </div>
+    <div id="big">
+      <img id="big_img" src="./images/1.jpg.avif">
+    </div>
+  </div>
+  <script>
+  function _id(id) {
+    return document.getElementById(id);
+  }
+  let move = _id('move'),
+    small = _id('small'),
+    small_img = _id('small_img'),
+    big = _id('big'),
+    big_img = _id('big_img');
+
+  // 鼠标移入小图片函数
+  small.onmousemove = function(e) {
+    move.style.display = 'block';
+    big_img.style.display = 'block';
+    // 绑定宽高
+    let x = e.pageX - small.offsetLeft - move.offsetWidth / 2;
+    let y = e.pageY - small.offsetTop - move.offsetHeight / 2;
+
+    // 控制不让小方块出框
+    if (x < 0) {
+      x = 0;
+    } else if (x > 75) {
+      x = 75;
+    }
+    if (y < 0) {
+      y = 0;
+    } else if (y > 75) {
+      y = 75;
+    }
+
+    // 小盒子跟随鼠标移动
+    move.style.left = x + 'px';
+    big_img.style.left = -x * 4 + 'px';
+    move.style.top = y + 'px';
+    big_img.style.top = -y * 4 + 'px';
+  }
+  small.onmouseleave = function() {
+    move.style.display = "none";
+    big_img.style.display = 'none';
+  }
+  </script>
+</body>
+
+</html>
