@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      width: 300px;
+      margin: 0 auto;
+    }
+
+    #container {
+      width: 600px;
+      height: 600px;
+      margin: 20px auto;
+      background: #ccc;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .front-box {
+      width: 60px;
+      height: 60px;
+    }
+
+    .front-box img {
+      width: 60px;
+      height: 60px;
+      mask-repeat: no-repeat;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>个人金属百大</h1>
+  <div id="container"></div>
+  <script>
+    let container = document.querySelector('#container');
+
+    function create_box() {
+      for (let i = 0; i < 100; i++) {
+        // 给容器生成盒子
+        let list = document.createElement('div');
+        list.classList.add('front-box');
+        container.appendChild(list);
+        // 给盒子添加图片
+        let img = document.createElement('img');
+        img.src = `./images/${i + 1}.jpg`;
+        list.appendChild(img);
+      }
+    }
+    create_box();
+  </script>
+</body>
+
+</html>
