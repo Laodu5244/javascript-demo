@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  #box {
+    border: 1px solid #ccc;
+    width: 450px;
+    height: 520px;
+    margin: 50px auto;
+  }
+
+  #box>img {
+    width: 450px;
+    height: 450px;
+  }
+
+  #box ul {
+    margin-top: -5px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  #box ul li {
+    width: 75px;
+    height: 70px;
+    list-style: none;
+  }
+
+  #box ul li img {
+    width: 75px;
+    height: 70px;
+  }
+  </style>
+</head>
+
+<body>
+  <div id="box">
+    <img id="img" src="./images/1.jpg.avif">
+    <ul>
+      <li id='item1' class="items">
+        <img src="./images/1.jpg.avif">
+      </li>
+      <li id='item2' class="items">
+        <img src="./images/2.jpg.avif">
+      </li>
+      <li id='item3' class="items">
+        <img src="./images/3.jpg.avif">
+      </li>
+      <li id='item4' class="items">
+        <img src="./images/4.jpg.avif"></li>
+      <li id='item5' class="items">
+        <img src="./images/5.jpg.avif"></li>
+    </ul>
+  </div>
+  <script>
+  // 小白书写方式(不推荐)
+  // let item1 = document.getElementById('item1');
+  // let item2 = document.getElementById('item2');
+  // let item3 = document.getElementById('item3');
+  // let item4 = document.getElementById('item4');
+  // let item5 = document.getElementById('item5');
+  // let img = document.getElementById('img');
+
+  // item1.onmouseover = function() {
+  //   img.src = "./images/1.jpg.avif";
+  // }
+  // item2.onmouseover = function() {
+  //   img.src = "./images/2.jpg.avif";
+  // }
+  // item3.onmouseover = function() {
+  //   img.src = "./images/3.jpg.avif";
+  // }
+  // item4.onmouseover = function() {
+  //   img.src = "./images/4.jpg.avif";
+  // }
+  // item5.onmouseover = function() {
+  //   img.src = "./images/5.jpg.avif";
+  // }
+
+  // 封装函数写法(不推荐)
+  // function $(id) {
+  //   return typeof id === 'string' ? document.getElementById(id) : null;
+  // }
+  // function change(liId, imgSrc) {
+  //   $(liId).onmouseover = function() {
+  //     $('img').src = imgSrc;
+  //   }
+  // }
+  // change('item1', "./images/1.jpg.avif");
+  // change('item2', "./images/2.jpg.avif");
+  // change('item3', "./images/3.jpg.avif");
+  // change('item4', "./images/4.jpg.avif");
+  // change('item5', "./images/5.jpg.avif");
+
+  // 遍历写法(推荐)
+  let items = document.querySelectorAll('.items');
+  let img = document.querySelector('#img');
+  for (let i=0; i<items.length;i++){
+   items[i].onmouseover = function(){
+     img.src=`./images/${i+1}.jpg.avif`;
+   }
+  }
+  </script>
+</body>
+
+</html>
