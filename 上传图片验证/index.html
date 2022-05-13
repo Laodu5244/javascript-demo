@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>上传图片验证</title>
+</head>
+
+<body>
+  <label for="file">上传图片格式验证:</label>
+  <!-- file属性是上传文件 -->
+  <input type="file" id="file">
+
+  <script>
+    window.onload = function () {
+      let file = document.querySelector('#file');
+      file.onchange = function () {
+        // 获取上传的图片路径
+        let path = this.value;
+        //  获取.在路径字符串中的位置
+        let loc = path.lastIndexOf('.');
+        // 截取文件路径的后缀名
+        let suffix = path.substr(loc);
+        // 统一转小写
+        let lower = suffix.toLowerCase();
+        // 判断
+        if (lower === '.jpg' || lower === '.png') {
+          alert('✔上传成功');
+        } else {
+          alert('❌上传失败');
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>
