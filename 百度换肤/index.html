@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>百度换肤</title>
+  <style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    opacity: 0.7;
+    background: #fff;
+  }
+
+  #photo {
+    width: 66%;
+    height: 140px;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+  }
+
+  #photo li {
+    cursor: pointer;
+  }
+
+  #photo img {
+    height: 120px;
+    margin: 10px;
+  }
+
+  #skin {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  #skin img {
+    width: 100%;
+    height: 100%;
+    display: none;
+  }
+
+  #skin img.active {
+    animation: opa 1s forwards;
+    display: block;
+  }
+
+  @keyframes opa {
+    from {
+      opacity: 0.3;
+    }
+
+    to: {
+      opacity: 1;
+    }
+  }
+  </style>
+</head>
+
+<body>
+  <div id="skin">
+    <img class="img active" src="./images/1.jpg">
+    <img class="img" src="./images/2.jpg">
+    <img class="img" src="./images/3.jpg">
+    <img class="img" src="./images/4.jpg">
+  </div>
+  <div id="photo">
+    <ul>
+      <li><img src="./images/1.jpg"></li>
+      <li><img src="./images/2.jpg"></li>
+      <li><img src="./images/3.jpg"></li>
+      <li><img src="./images/4.jpg"></li>
+    </ul>
+  </div>
+  <script>
+  let list = document.getElementsByTagName('li');
+  let imgs = document.querySelectorAll('.img');
+
+  for (let index in list) {
+    list[index].onclick = function() {
+      imgs.forEach(i => {
+        imgs.forEach(k => {
+          k.classList.remove('active');
+        })
+        i = index;
+        imgs[i].classList.add('active');
+      })
+    }
+  }
+  </script>
+</body>
+
+</html>
