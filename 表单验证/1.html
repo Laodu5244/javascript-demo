@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>表单验证</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    #prompt {
+      font-size: 18px;
+      color: darkgray;
+    }
+
+    #score {
+      font-size: 18px;
+      border: 2px solid darkgray;
+    }
+
+    .right {
+      background: url('img/foot1.png') no-repeat 10px center;
+      background-size: 22px 22px;
+      padding-left: 35px;
+    }
+
+    .error {
+      background: url('img/icon-tips.png') no-repeat 10px center;
+      background-size: 18px 18px;
+      padding-left: 35px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <label for="score">你的成绩:</label>
+    <input type="text" placeholder="请输入分数" id="score"> <span id="prompt">请输入你的成绩</span>
+  </div>
+
+  <script>
+    function el(el) {
+      return document.querySelector(el);
+    }
+    let prompt = el('#prompt'),
+      score = el('#score');
+    // onblur: 失去焦点
+    score.onblur = function () {
+      // 获取输入内容
+      let value = parseFloat(this.value);
+      // 验证
+      if (isNaN(value)) {
+        // 不是一个数
+        prompt.innerHTML = '输入的成绩不正确';
+        prompt.setAttribute('class', 'error');
+        prompt.style.color = "red";
+        this.style.borderColor = "red";
+      } else if (value >= 0 && value <= 100) {
+        // 正确的
+        prompt.innerHTML = '输入的成绩正确';
+        prompt.setAttribute('class', 'right');
+        prompt.style.color = "green";
+        this.style.borderColor = "green";
+      } else {
+        // 超出成绩范围
+        prompt.innerHTML = '成绩必须在0~100之间';
+        prompt.setAttribute('class', 'error');
+        prompt.style.color = "orange";
+        this.style.borderColor = "orange";
+      }
+    }
+    // 获取焦点
+    score.onfocus = function () {
+      prompt.innerHTML = '请输入你的成绩';
+      prompt.className = '';
+      prompt.style.color = "darkgray";
+      this.style.borderColor = 'darkgray';
+      this.style.outline = 'darkgray';
+      this.value = '';
+    }
+
+  </script>
+</body>
+
+</html>
