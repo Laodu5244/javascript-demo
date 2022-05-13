@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    .panel {
+      background-color: #ddd;
+      border: 1px solid #777;
+      border-radius: 5px;
+      width: 400px;
+      padding: 20px;
+      margin: 100px auto;
+    }
+
+    .footer {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="panel">
+    <div class="tatle">
+      <h3>虾米音乐</h3>
+      <hr>
+    </div>
+    <div class="content">
+      <input type="checkbox"> 梦回唐朝<br>
+      <input type="checkbox"> 无地自容<br>
+      <input type="checkbox"> 生命之诗<br>
+      <input type="checkbox"> 向阳花<br>
+      <input type="checkbox"> 一无所有<br>
+      <input type="checkbox"> 镜子中<br>
+      <input type="checkbox"> 在别处<br>
+      <input type="checkbox"> 赤裸裸<br>
+      <input type="checkbox"> 钢铁雄心<br>
+    </div>
+    <div class="footer">
+      <hr>
+      <button id="all">全选</button>
+      <button id="clear">清空</button>
+      <button id="toggle">反选</button>
+    </div>
+  </div>
+
+  <script>
+    function _(ele) {
+      return document.querySelector(ele);
+    }
+    let inputs = document.getElementsByTagName('input');
+
+    // 全选
+    _('#all').onclick = function () {
+      for (let i of inputs) {
+        i.checked = true;
+      }
+    }
+    // 清空
+    _('#clear').onclick = function () {
+      for (let i of inputs) {
+        i.checked = false;
+      }
+    }
+
+    // 反选
+    _('#toggle').onclick = function () {
+      for (let i of inputs) {
+        i.checked = !i.checked;
+      }
+    }
+  </script>
+</body>
+
+</html>
