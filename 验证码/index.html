@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    * {
+      font-size: 20px;
+    }
+
+    body {
+      background-color: #aaa;
+    }
+
+    .container {
+      width: 300px;
+      height: 300px;
+      margin: 30px auto;
+    }
+
+    .code {
+      display: inline-block;
+      background-color: #fff;
+      width: 80px;
+      font-weight: bold;
+      color: blue;
+      font-style: italic;
+    }
+
+    a {
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="show">
+      <span class="code"></span>
+      <a href="#" id="link">看不清换一张</a>
+    </div>
+    <div class="inp">
+      <label for="inputCode">验证码:</label>
+      <input type="text" class="input" id="val">
+    </div>
+    <input id="button" type="button" value="确定">
+  </div>
+
+  <script>
+    let code = document.querySelector('.code');
+    let link = document.querySelector("#link");
+    let btn = document.querySelector("#button");
+    let input = document.querySelector("#val");
+    window.onload = function () {
+      let str = '';
+      let res = getCode();
+      // onload加载时调用
+      function getCode() {
+        let arr = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
+        // 生成验证码
+        for (let i = 0; i < 6; i++) {
+          let num = Math.round(Math.random() * (15 - 0) + 0);
+          str += arr[num];
+        }
+        return str;
+      }
+      code.innerText = res;
+      link.onclick = function () {
+        str = '';
+        code.innerText = getCode();
+      }
+      btn.onclick = function () {
+        if (input.value === str) {
+          window.location.href = 'http://baidu.com'
+        } else {
+          alert('登陆失败,请重新输入');
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>
