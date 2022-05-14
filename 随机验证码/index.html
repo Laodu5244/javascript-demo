@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    body {
+      background: #999;
+    }
+
+    .container {
+      position: relative;
+      width: 270px;
+      margin: 100px auto;
+    }
+
+    #code {
+      width: 150px;
+      height: 100px;
+      background: #ddd;
+      padding: 10px;
+      line-height: 100px;
+      text-align: center;
+      font-size: 24px;
+      color: red;
+      font-weight: bold;
+    }
+
+    input {
+      width: 170px;
+      outline: none;
+    }
+
+    #btn {
+      position: absolute;
+      top: 30%;
+      right: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div id="code"></div>
+    <button id="btn">换一张</button>
+    <input type="text" id="newCode">
+    <button id="validate">验证</button>
+  </div>
+
+  <script>
+    window.onload = function () {
+      let code = '';
+      // 获取对应标签
+      let codeDiv = _el('#code'),
+        btn = _el('#btn'),
+        input = _el('#newCode'),
+        val = _el('#validate');
+      // 加载页面获取对应验证码
+      createCode();
+      function random(max, min) {
+        return Math.floor(Math.random() * (max - min) + min);
+      }
+      // 生成验证码
+      function createCode() {
+        let codeLength = 6;
+        let randomCode = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
+        for (let i = 0; i < codeLength; i++) {
+          let index = random(0, 16);
+          code += randomCode[index];
+        }
+        codeDiv.innerHTML = code;
+      }
+      btn.onclick = function () {
+        code = "";
+        createCode();
+      }
+      // 提交验证码
+      val.onclick = function () {
+        // 获取用户输入的验证码
+        let newCode = input.value.toLowerCase();
+        if (newCode === code) {
+          // 验证成功,跳转百度
+          window.location.href = 'http://www.baidu.com';
+        } else {
+          // 验证失败
+          alert('验证码不正确,请重新输入');
+          code = "";
+          createCode();
+          // 输入框置空
+          input.value = "";
+        }
+      }
+    }
+    function _el(el) {
+      return document.querySelector(el)
+    }
+  </script>
+</body>
+
+</html>
