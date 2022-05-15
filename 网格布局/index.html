@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>九宫格布局</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #cols {
+      width: 50%;
+      margin: 0 auto;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    #cols button {
+      width: 100px;
+      cursor: pointer;
+    }
+
+    #content {
+      width: 250px;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    #content img {
+      width: 220px;
+      margin: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="cols">
+    <button>2列</button>
+    <button>3列</button>
+    <button>4列</button>
+    <button>5列</button>
+    <button>6列</button>
+  </div>
+  <div id="content">
+    <img src="./images/1.jpg">
+    <img src="./images/2.jpg">
+    <img src="./images/3.jpg">
+    <img src="./images/4.jpg">
+    <img src="./images/5.jpg">
+    <img src="./images/6.jpg">
+    <img src="./images/7.jpg">
+    <img src="./images/8.jpg">
+    <img src="./images/9.jpg">
+    <img src="./images/10.jpg">
+    <img src="./images/11.jpg">
+    <img src="./images/12.jpg">
+    <img src="./images/13.jpg">
+    <img src="./images/14.jpg">
+    <img src="./images/15.jpg">
+  </div>
+
+  <script>
+    let imgs = document.getElementsByTagName('img');
+    let btns = document.getElementsByTagName('button');
+
+    // 封装获取几列的方法函数
+    function flex(num1, num2) {
+      for (let i of imgs) {
+        i.parentNode.style.width = (i.width * num1 + num2) + 'px';
+      }
+    }
+    // 2列
+    btns[0].onclick = function () {
+      flex(2, 20)
+    }
+    // 3列
+    btns[1].onclick = function () {
+      flex(3, 30)
+    }
+    // 4列
+    btns[2].onclick = function () {
+      flex(4, 40)
+    }
+    // 5列
+    btns[3].onclick = function () {
+      flex(5, 50)
+    }
+    // 6列
+    btns[4].onclick = function () {
+      flex(6, 60)
+    }
+  </script>
+</body>
+
+</html>
