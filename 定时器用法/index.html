@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    h1 {
+      font-size: 100px;
+      margin-top: 10px;
+      padding-left: 20px;
+      background: pink;
+      width: 500px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <button id="start">开启</button>
+  <button id="stop">关闭</button>
+  <h1 id="num">0</h1>
+
+  <script>
+    function id(id) {
+      return document.getElementById(id);
+    }
+    let timer = null;
+    id('start').onclick = function () {
+      clearInterval(timer);
+      timer = setInterval(() => {
+        let num = id('num').innerHTML;
+        num++;
+        id('num').innerHTML = num;
+        id('num').style.backgroundColor = "orange"
+      }, 1000)
+    }
+    id('stop').onclick = function () {
+      clearInterval(timer);
+      id('num').style.backgroundColor = "pink"
+    }
+  </script>
+</body>
+
+</html>
