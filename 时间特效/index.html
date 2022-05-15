@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(#2193b0, #161626);
+    }
+
+    #date {
+      width: 450px;
+      height: 300px;
+      background-color: darkorange;
+      border-radius: 10px;
+      margin: 100px auto;
+    }
+
+    #now {
+      width: 450px;
+      height: 60px;
+      line-height: 60px;
+      text-align: center;
+      color: #fff;
+      font-size: 26px;
+    }
+
+    #day {
+      width: 200px;
+      height: 200px;
+      padding-top: 20px;
+      background-color: hotpink;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 50px;
+      font-weight: bold;
+      border-radius: 10px;
+    }
+
+    #n_data {
+      color: rgb(115, 202, 29);
+    }
+
+    #n_day {
+      color: rgb(46, 9, 208);
+      margin-top: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="date">
+    <p id="now"></p>
+    <div id="day">
+      <p id="n_data"></p>
+      <p id="n_day"></p>
+    </div>
+  </div>
+  <script>
+    function _(el) {
+      return document.getElementById(el);
+    }
+    let now = _('now'), n_data = _('n_data'),
+      n_day = _('n_day');
+
+    function getDate() {
+      let date = new Date();
+      let year = date.getFullYear();
+      let month = date.getMonth() + 1;
+      let dates = date.getDate();
+      let day = date.getDay();
+      let arr = [
+        "星期日",
+        "星期一",
+        "星期二",
+        "星期三",
+        "星期四",
+        "星期五",
+        "星期六",
+      ];
+      n_data.innerHTML = month + "月" + dates + "日";
+      n_day.innerHTML = arr[day];
+      return (
+        year + "年" + month + "月" + dates + "日 " + arr[day]
+      );
+
+    }
+    //时分秒
+    setInterval(() => {
+      let time = new Date();
+      let hours = time.getHours();
+      let minutes = time.getMinutes();
+      let seconds = time.getSeconds();
+      minutes = minutes < 10 ? "0" + minutes : minutes;
+      seconds = seconds < 10 ? "0" + seconds : seconds;
+      hours = hours < 10 ? "0" + hours : hours;
+      let n = `${hours}:${minutes}:${seconds}`
+      now.innerHTML = getDate() + n;
+    })
+
+
+  </script>
+</body>
+
+</html>
