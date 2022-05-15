@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    #box {
+      width: 700px;
+      border: 1px solid #999;
+      margin: 30px auto;
+      padding: 20px;
+    }
+
+    #top {
+      margin-bottom: 20px;
+    }
+
+    #comment {
+      width: 80%;
+      padding: 10px;
+      font-size: 20px;
+      outline: none;
+    }
+
+    #content li {
+      border-bottom: 1px dashed #999;
+      width: 580px;
+      color: orange;
+      line-height: 45px;
+      position: relative;
+    }
+
+    #content button {
+      position: absolute;
+      right: -55px;
+      top: 15px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box">
+    <div id="top">
+      <textarea id="comment" cols="60" rows="6" placeholder="请输入您的评论"></textarea>
+      <button id="btn">发布</button>
+    </div>
+    <ul id="content"></ul>
+
+    <script>
+      window.onload = function () {
+        id('btn').onclick = function () {
+          // 获取用户输入的内容
+          let com = id('comment').value;
+          //  判断有没有输入内容
+          if (com.length === 0) {
+            alert('请输入内容');
+            return;
+          }
+
+          // 创建li标签
+          let li = document.createElement('li');
+          li.innerHTML = `${com}<button class='delete'>删除</button>`;
+
+          // id('content').appendChild(li);
+          // insertBefore: 让新加的li在其他li之前
+          id('content').insertBefore(li, id('content').children[0]);
+          // 清空输入框中的内容
+          id('comment').value = '';
+
+          // 删除评论
+          let del = document.querySelectorAll('.delete');
+          for (let i of del) {
+            i.onclick = function () {
+              // 删除父级标签
+              this.parentNode.remove();
+            }
+          }
+        }
+      }
+      // 获取id
+      function id(id) {
+        return document.getElementById(id);
+      }
+    </script>
+  </div>
+</body>
+
+</html>
