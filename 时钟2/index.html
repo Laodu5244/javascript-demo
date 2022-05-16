@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="clock">
+      <div class="circle">
+        <ul class="scale">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+        <ul class="number">
+          <li>12</li>
+          <li>3</li>
+          <li>6</li>
+          <li>9</li>
+        </ul>
+      </div>
+
+      <div class="hour"></div>
+      <div class="min"></div>
+      <div class="sec"></div>
+    </div>
+  </div>
+
+  <script>
+    let sec = document.querySelector('.sec');
+    let min = document.querySelector('.min');
+    let hour = document.querySelector('.hour');
+
+    function time() {
+      // 获取时分秒
+      let now = new Date();
+      let s = now.getSeconds();
+      let m = now.getMinutes() + s / 60;
+      let h = now.getHours() % 12 + m / 60;
+
+      // 旋转
+      sec.style.transform = `rotate(${s * 6}deg)`;
+      min.style.transform = `rotate(${m * 6}deg)`;
+      hour.style.transform = `rotate(${h * 30}deg)`;
+    }
+    // 初始化
+    setInterval(time, 1000);
+    time();
+
+  </script>
+</body>
+
+</html>
