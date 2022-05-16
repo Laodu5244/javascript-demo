@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    body {
+      background: #000;
+    }
+
+    .box {
+      width: 600px;
+      height: 350px;
+      margin: 100px auto;
+      overflow: hidden;
+      border-radius: 10px;
+      position: relative;
+    }
+
+    .box img {
+      width: 100%;
+      border-radius: 10px;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    span {
+      position: absolute;
+      width: 100%;
+      height: 50%;
+      left: 0;
+      cursor: pointer;
+      z-index: 9;
+    }
+
+    #top {
+      top: 0;
+    }
+
+    #bottom {
+      bottom: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box" id="box">
+    <img id="img" src="./1.jpg">
+    <span id="top"></span>
+    <span id="bottom"></span>
+  </div>
+
+  <script>
+    function id(id) {
+      return document.getElementById(id);
+    }
+    let _top = id('top'), _bottom = id('bottom'),
+      img = id('img'), box = id('box');
+
+    let num = 0, timer = null;
+
+    _top.onmouseover = function () {
+      clearInterval(timer);
+      timer = setInterval(() => {
+        num -= 1;
+        if (num >= -3129) {
+          img.style.top = num + 'px';
+        } else {
+          clearInterval(timer);
+        }
+      }, 10)
+    }
+    _bottom.onmouseover = function () {
+      clearInterval(timer);
+      timer = setInterval(() => {
+        num += 1;
+        if (num <= 0) {
+          img.style.top = num + 'px';
+        } else {
+          clearInterval(timer);
+        }
+      }, 10)
+    }
+    box.onmouseout = function () {
+      clearInterval(timer);
+    }
+  </script>
+</body>
+
+</html>
