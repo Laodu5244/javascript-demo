@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  .container {
+    width: 1100px;
+    margin: 50px auto;
+    display: flex;
+  }
+
+  .box {
+    width: 200px;
+    height: 160px;
+    box-shadow: 0 0 10px black;
+    overflow: hidden;
+    border-radius: 50%;
+    margin: 20px;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .box img {
+    width: 100%;
+    height: 160px;
+    border-radius: 50%;
+
+  }
+
+  .box:hover .cover {
+
+    opacity: 0.4;
+    transform: scale(1);
+  }
+
+  .cover {
+    width: 100%;
+    height: 160px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    line-height: 160px;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 50px;
+    color: orange;
+    background-color: #000;
+    transform: scale(0);
+    opacity: 0;
+    transition: all 0.5s ease;
+  }
+
+  @keyframes scale {
+    0% {
+      transform: scale(1);
+    }
+
+    40% {
+      transform: scale(0.9);
+    }
+
+80%{
+	transform: scale(1.1);
+}
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  .box.active {
+    animation: scale 0.5s infinite linear;
+  }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="box">
+      <img src="./img/0.webp">
+      <div class="cover">baby</div>
+    </div>
+    <div class="box">
+      <img src="./img/1.webp">
+      <div class="cover">baby</div>
+    </div>
+    <div class="box">
+      <img src="./img/4.webp">
+      <div class="cover">baby</div>
+    </div>
+    <div class="box">
+      <img src="./img/3.webp">
+      <div class="cover">baby</div>
+    </div>
+    <div class="box">
+      <img src="./img/2.webp">
+      <div class="cover">baby</div>
+    </div>
+  </div>
+  <script>
+  let box = document.querySelectorAll('.box');
+  for (let i of box) {
+    i.onclick = function() {
+      for (let i of box) {
+        i.classList.remove('active')
+      }
+      this.classList.add('active')
+    }
+  }
+  </script>
+</body>
+
+</html>
