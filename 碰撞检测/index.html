@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  html,
+  body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  #box {
+    width: 200px;
+    height: 200px;
+    background-color: pink;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  #move {
+    width: 100px;
+    height: 100px;
+    background-color: darkorange;
+    position: absolute;
+  }
+  </style>
+</head>
+
+<body>
+  <div id="box"></div>
+  <div id="move"></div>
+  <script>
+  function id(id) {
+    return document.getElementById(id);
+  }
+
+  window.onload = function() {
+    let box = id('box'),
+      move = id('move');
+
+    // 鼠标按下 move移动
+    move.onmousedown = function(e) {
+      e = e || event;
+      let t = e.clientY - move.offsetTop;
+      let l = e.clientX - move.offsetLeft;
+
+      document.onmousemove = function(e) {
+        e = e || event;
+        let y = e.clientY - t;
+        let x = e.clientX - l;
+
+        move.style.left = x + 'px';
+        move.style.top = y + 'px';
+
+        // 检测碰撞
+        if (x + 100 + move.offsetWidth < box.offsetLeft || x + 100 > box.offsetLeft + box.offsetWidth || y + 100 + move.offsetHeight < box.offsetTop || y + 100 > box.offsetTop + box.offsetHeight) {
+          box.style.background = 'pink'
+        } else {
+          box.style.background = 'red'
+        }
+      }
+    }
+
+    // 鼠标抬起 停止移动
+    move.onmouseup = function() {
+      document.onmousemove = null;
+    }
+  }
+  </script>
+</body>
+
+</html>
