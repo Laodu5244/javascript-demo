@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>日历</title>
+  <style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  #box {
+    width: 600px;
+    height: 300px;
+    margin: 50px auto;
+  }
+
+  #box header {
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #fff;
+    background-color: #17a;
+    padding: 0 10px;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  #box header .fl,
+  #box header .fr {
+    cursor: pointer;
+  }
+
+  header .ym {
+    font-size: 28px;
+    color: orange;
+  }
+
+  #box table {
+    width: 100%;
+    height: 250px;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+  }
+
+  #box table th,
+  #box table td {
+    border-top: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    line-height: 34px;
+  }
+  #box table td{
+  	text-align: center;
+  }
+  .red{
+  	color: orangered;
+  }
+  </style>
+</head>
+
+<body>
+  <div id="box">
+    <!-- js生成结构 -->
+  </div>
+  <script src="./jQuery.min.js"></script>
+  <script src="./main.js"></script>
+</body>
+
+</html>
