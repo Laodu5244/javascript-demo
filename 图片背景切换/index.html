@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  .box {
+    position: relative;
+    width: 400px;
+    margin: 0 auto;
+  }
+
+  ul {
+    position: absolute;
+    bottom: 10px;
+    right: 50%;
+    transform: translateX(50%);
+    display: flex;
+  }
+
+  li {
+    list-style: none;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    line-height: :25px;
+    background-color: rgba(0, 0, 0, 0.2);
+    margin: 5px;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  li:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
+  img {
+    width: 400px;
+  }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <img src="./images/1.jpg" alt="">
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+    </ul>
+  </div>
+  <script>
+  function el(el) {
+    return document.querySelector(el);
+  }
+  let img = el('img'),
+    ul = el('ul');
+
+  for (let i = 0; i < ul.children.length; i++) {
+    let index = i + 1;
+    ul.children[i].setAttribute('index', index);
+    ul.children[i].addEventListener('click', function() {
+      img.src = `./images/${index}.jpg`;
+     let hue= Math.floor(Math.random() * 361)
+    console.log(hue)
+      document.querySelector('body').style.background = `hsl(${hue},50%,80%)`;
+    })
+  }
+  </script>
+</body>
+
+</html>
