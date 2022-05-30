@@ -5,57 +5,74 @@
   <meta charset="UTF-8">
   <title>Document</title>
   <style>
-    body {
-      background: #999;
-    }
+  * {
+    margin: 0;
+    padding: 0;
+  }
 
-    img {
-      height: 300px;
-    }
+  .box {
+    position: relative;
+    width: 400px;
+    margin: 0 auto;
+  }
 
-    div {
-      width: 500px;
-      height: 350px;
-      margin: 30px auto;
-    }
+  ul {
+    position: absolute;
+    bottom: 10px;
+    right: 50%;
+    transform: translateX(50%);
+    display: flex;
+  }
 
-    button {
-      height: 40px;
-    }
+  li {
+    list-style: none;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    line-height: :25px;
+    background-color: rgba(0, 0, 0, 0.2);
+    margin: 5px;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  li:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
+  img {
+    width: 400px;
+  }
   </style>
 </head>
 
 <body>
-  <div>
-    <img src="./image/01.webp" id="lady">
-    <button id="prev">上一张</button>
-    <button id="next">下一张</button>
+  <div class="box">
+    <img src="./images/1.jpg" alt="">
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+    </ul>
   </div>
-
   <script>
-    // 1.获取事件源
-    let lady = document.querySelector("#lady");
-    let prev = document.querySelector("#prev");
-    let next = document.querySelector("#next");
-    var minIndex = 1, maxIndex = 4; currentIndex = minIndex;
-    // 2.按钮绑定点击事件
-    next.onclick = function () {
-      if (currentIndex === maxIndex) {
-        currentIndex = minIndex;
-      } else {
-        currentIndex++;
-      }
-      lady.setAttribute("src", `image/0${currentIndex}.webp`);
-    }
-    prev.onclick = function () {
-      if (currentIndex === minIndex) {
-        currentIndex = maxIndex;
-      } else {
-        currentIndex--;
-      }
-      lady.setAttribute("src", `image/0${currentIndex}.webp`);
-    }
+  function el(el) {
+    return document.querySelector(el);
+  }
+  let img = el('img'),
+    ul = el('ul');
 
+  for (let i = 0; i < ul.children.length; i++) {
+    let index = i + 1;
+    ul.children[i].setAttribute('index', index);
+    ul.children[i].addEventListener('click', function() {
+      img.src = `./images/${index}.jpg`;
+     let hue= Math.floor(Math.random() * 361)
+    console.log(hue)
+      document.querySelector('body').style.background = `hsl(${hue},50%,80%)`;
+    })
+  }
   </script>
 </body>
 

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./cornify.js"></script>
+</head>
+
+<body>
+	<h3>键盘输入(john),会有神奇效果</h3>
+  <script>
+  const secretCode = 'john';
+  const pressed = [];
+  // 映射键盘输出
+  window.addEventListener('keyup', (e) => {
+    pressed.push(e.key)
+    pressed.splice(-pressed.length - 1, pressed.length - secretCode.length);
+    if(pressed.join('').includes(secretCode)){
+      console.log('匹配成功')
+      cornify_add();
+    }
+   
+  })
+  </script>
+</body>
+
+</html>
