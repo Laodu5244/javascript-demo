@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  body {
+    max-height: 100vh;
+    max-width: 100vw;
+    overflow: hidden;
+  }
+
+  li {
+    height: 30px;
+    margin: 5px;
+    line-height: 30px;
+    font-size: 24px;
+  }
+
+  .box {
+    position: fixed;
+    top: 40%;
+    right: 30%;
+  }
+
+  button {
+    background-color: orange;
+    width: 160px;
+    height: 100px;
+    cursor: pointer;
+    font-size: 30px;
+    color: #fff;
+    margin: 30px;
+  }
+
+  button:hover {
+    background-color: orangered;
+  }
+  </style>
+</head>
+
+<body>
+  <ul></ul>
+  <div class="box">
+    <button id="start">开始</button>
+    <button id="stop">停止</button>
+  </div>
+  <script>
+  let ul = document.querySelector('ul')
+  let start = document.querySelector('#start')
+  let stop = document.querySelector('#stop')
+  let timer = null
+  for (let i = 0; i < 15; i++) {
+    let li = document.createElement('li')
+    ul.appendChild(li)
+  }
+  let list = document.querySelectorAll('li')
+
+  function rand() {
+    timer = setInterval(() => {
+      list.forEach((item, index) => {
+        const datas = Math.floor(Math.random() * 100000000000)
+        item.innerText = datas
+        const num1 = Math.floor(Math.random() * 10)
+        const num2 = Math.floor(Math.random() * 10)
+        const num3 = Math.floor(Math.random() * 10)
+        item.style.color = `#${num1}${num2}${num3}`
+      })
+    }, 200)
+  }
+  stop.onclick = () => {
+    clearInterval(timer)
+  }
+  start.onclick = () => {
+    clearInterval(timer)
+    rand()
+  }
+
+  rand()
+  </script>
+</body>
+
+</html>
