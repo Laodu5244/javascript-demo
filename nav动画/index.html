@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <nav class="active" id="nav">
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Works</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <button class="icon" id="toggle">
+      <div class="line line1"></div>
+      <div class="line line2"></div>
+    </button>
+  </nav>
+
+  <script>
+    function el(el) {
+      return document.getElementById(el)
+    }
+    let toggle = el('toggle'), nav = el('nav');
+
+    toggle.addEventListener('click', () => {
+      nav.classList.toggle('active')
+    })
+  </script>
+</body>
+
+</html>
