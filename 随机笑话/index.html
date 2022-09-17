@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Jokes</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<div class="container">
+  <h3>Don't Laugh Challenge</h3>
+  <div id="joke" class="joke">Joke goes here</div>
+  <button id="jokeBtn" class="btn">Get Another Joke</button>
+</div>
+
+<script>
+function el(el){ return document.getElementById(el) }
+let joke = el('joke'), btn = el('jokeBtn')
+
+btn.onclick = async()=>{
+  let config = { headers:{
+    Accept:'application/json'
+  }}
+  let res = await fetch('https://icanhazdadjoke.com',config)
+  let data = await res.json()
+  joke.innerHTML = data.joke
+}
+</script>
+
+</body>
+</html>
